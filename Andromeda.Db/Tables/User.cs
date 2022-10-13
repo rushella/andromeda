@@ -2,6 +2,6 @@
 
 public class User
 {
-    public string DiscordId { get; set; }
-    public string ShikimoriId { get; set; }
+    public string? DiscordId { get; set; }
+    public string? ShikimoriId { get; set; }
 }

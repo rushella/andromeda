@@ -13,8 +13,8 @@ public class AndromedaContextFactory : IDesignTimeDbContextFactory<AndromedaCont
         Console.WriteLine($"Creating AndromedaContext for \"{environment}\" environment.");
         
         var configuration = new ConfigurationBuilder()
-            .AddJsonFile($"databaseSettings.json", false, true)
-            .AddJsonFile($"databaseSettings.{environment}.json", true, true)
+            .AddJsonFile($"appsettings.json", false, true)
+            .AddJsonFile($"appsettings.{environment}.json", true, true)
             .Build();
         
         var optionsBuilder = new DbContextOptionsBuilder<AndromedaContext>();

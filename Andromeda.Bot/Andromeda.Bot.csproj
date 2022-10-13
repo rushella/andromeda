@@ -22,8 +22,11 @@
         <None Update="appsettings.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Update="appsettings.'$(ANDROMEDA_ENVIRONMENT)'.json">
+        <None Update="appsettings.$(ANDROMEDA_ENVIRONMENT).json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="appsettings.dev.json">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
     </ItemGroup>
     
