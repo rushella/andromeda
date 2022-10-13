@@ -8,23 +8,18 @@ public class AndromedaContextFactory : IDesignTimeDbContextFactory<AndromedaCont
 {
     public AndromedaContext CreateDbContext(string[] args)
     {
-        if (args.Length == 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(args), "Please provide environment name [dev/prod]");
-        }
+        var environment = args.FirstOrDefault();
 
-        var environment = args[0];
-
-        Console.WriteLine($"Creating ShikiCordContext for \"{environment}\" environment.");
+        Console.WriteLine($"Creating AndromedaContext for \"{environment}\" environment.");
         
         var configuration = new ConfigurationBuilder()
-            .AddJsonFile($"dbsettings.json", false, true)
-            .AddJsonFile($"dbsettings.{environment}.json", true, true)
+            .AddJsonFile($"databaseSettings.json", false, true)
+            .AddJsonFile($"databaseSettings.{environment}.json", true, true)
             .Build();
         
         var optionsBuilder = new DbContextOptionsBuilder<AndromedaContext>();
         
-        optionsBuilder.UseNpgsql(configuration.GetConnectionString("ShikiCordDb")!);
+        optionsBuilder.UseNpgsql(configuration.GetConnectionString("Andromeda")!);
 
         return new AndromedaContext(optionsBuilder.Options);
     }
