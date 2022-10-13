@@ -1,8 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Andromeda.Bot", "Andromeda.Bot\Andromeda.Bot.csproj", "{2C53137E-81F1-4AFA-8E45-95D2493C7518}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Andromeda.Db", "Andromeda.Db\Andromeda.Db.csproj", "{B288DF6D-5527-4A5F-A2B3-09E3EA156C4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C53137E-81F1-4AFA-8E45-95D2493C7518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C53137E-81F1-4AFA-8E45-95D2493C7518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C53137E-81F1-4AFA-8E45-95D2493C7518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C53137E-81F1-4AFA-8E45-95D2493C7518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B288DF6D-5527-4A5F-A2B3-09E3EA156C4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B288DF6D-5527-4A5F-A2B3-09E3EA156C4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B288DF6D-5527-4A5F-A2B3-09E3EA156C4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B288DF6D-5527-4A5F-A2B3-09E3EA156C4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
