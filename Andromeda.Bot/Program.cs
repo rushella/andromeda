@@ -23,20 +23,25 @@ var serviceProvider = new ServiceCollection()
         Token = discordOptions.BotToken,
         AutoReconnect = true,
         MinimumLogLevel = LogLevel.Debug,
+        
     })
-    .AddSingleton(
-        new ClientSettings(shikimoriOptions.ClientName, shikimoriOptions.ClientId, shikimoriOptions.ClientSecret))
     .AddSingleton<DiscordClient>()
-    .AddScoped<ShikimoriClient>()
-    // .AddDbContext<AndromedaContext>(
-    //     o => o.UseNpgsql(configuration.GetConnectionString("Andromeda")!))
+    .AddSingleton<ShikimoriClient>(x => new ShikimoriClient(null, 
+        new ClientSettings(shikimoriOptions.ClientName, shikimoriOptions.ClientId, shikimoriOptions.ClientSecret)))
     .BuildServiceProvider();
 
 var discordClient = serviceProvider.GetRequiredService<DiscordClient>();
 
-serviceProvider.GetRequiredService<DiscordClient>()
-    .UseSlashCommands()
-    .RegisterCommands<ShikimoriModule>();
+var slash = discordClient.UseSlashCommands(new SlashCommandsConfiguration {Services = serviceProvider});
+
+slash.SlashCommandErrored += (sender, eventArgs) =>
+{
+    Console.WriteLine(eventArgs.Exception);
+    
+    return Task.CompletedTask;
+};
+
+slash.RegisterCommands<ShikimoriModule>();
 
 await discordClient.ConnectAsync();
 
